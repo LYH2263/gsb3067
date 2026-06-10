@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>岩心描述与分析系统</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <h1>🪨 岩心描述与分析系统</h1>
+      <p class="subtitle">智能识别岩性、构造与沉积相</p>
+    </header>
+
+    <main class="main-content">
+      <!-- 上传区域 -->
+      <section class="upload-section">
+        <div class="upload-area" id="uploadArea">
+          <input type="file" id="fileInput" accept="image/*" hidden>
+          <div class="upload-placeholder">
+            <svg class="upload-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+              <polyline points="17 8 12 3 7 8"></polyline>
+              <line x1="12" y1="3" x2="12" y2="15"></line>
+            </svg>
+            <p class="upload-text">点击或拖拽上传岩心图片</p>
+            <p class="upload-hint">支持 JPG、PNG、GIF、BMP 格式，最大 10MB</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 分析结果区域 -->
+      <section class="results-section" id="resultsSection" style="display: none;">
+        <div class="results-header">
+          <h2>分析结果</h2>
+          <button class="btn-secondary" id="newAnalysisBtn">新建分析</button>
+        </div>
+
+        <div class="results-grid">
+          <!-- 图片预览 -->
+          <div class="result-card image-preview-card">
+            <h3>岩心图片</h3>
+            <div class="image-container">
+              <img id="previewImage" src="" alt="岩心图片">
+            </div>
+            <div class="image-info" id="imageInfo"></div>
+          </div>
+
+          <!-- 岩性识别 -->
+          <div class="result-card">
+            <h3>岩性识别</h3>
+            <div id="lithologyResult"></div>
+          </div>
+
+          <!-- 构造分析 -->
+          <div class="result-card">
+            <h3>构造分析</h3>
+            <div id="structureResult"></div>
+          </div>
+
+          <!-- 沉积相判断 -->
+          <div class="result-card facies-card">
+            <h3>沉积相判断</h3>
+            <div id="faciesResult"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 加载动画 -->
+      <div class="loading-overlay" id="loadingOverlay" style="display: none;">
+        <div class="loading-spinner"></div>
+        <p>正在分析岩心图片...</p>
+      </div>
+    </main>
+  </div>
+
+  <!-- Toast 容器 -->
+  <div id="toastContainer" class="toast-container"></div>
+
+  <!-- 自定义弹窗 -->
+  <div class="modal-overlay" id="modalOverlay" style="display: none;">
+    <div class="modal">
+      <div class="modal-header">
+        <h3 id="modalTitle"></h3>
+        <button class="modal-close" id="modalClose">&times;</button>
+      </div>
+      <div class="modal-body" id="modalBody"></div>
+      <div class="modal-footer">
+        <button class="btn-secondary" id="modalCancelBtn">取消</button>
+        <button class="btn-primary" id="modalConfirmBtn">确定</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

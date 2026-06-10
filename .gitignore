@@ -1,0 +1,9 @@
+node_modules/
+uploads/
+*.log
+.DS_Store
+.env
+
+# 出题相关，不纳入版本管理
+题目.md
+对话/

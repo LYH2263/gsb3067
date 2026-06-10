@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  rock-core-app:
+    build: .
+    ports:
+      - "3067:3067"
+    volumes:
+      - ./uploads:/app/uploads
+    environment:
+      - NODE_ENV=production
+      - PORT=3067
+    restart: unless-stopped
